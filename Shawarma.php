@@ -5,10 +5,9 @@ include_once 'IBridgeShawarma.php';
 
 
 class Shawarma extends Dish {
-    protected $components;
     protected $type;
-    public function __construct($type) {
-        parent::__construct('shawarma', 200);
+    public function __construct($type, $name) {
+        parent::__construct($name, 200);
         $this->type = $type;
     }
 
