@@ -142,8 +142,11 @@
         include_once 'AFPepperoni.php';
         include_once 'AFMargaret.php';
 
+        include_once 'PPepperoni.php';
+        include_once 'PMargaret.php';
+
         // простая фабрика
-        
+
         $pizzaFactory = new SFPizza;
         $pizza1 = $pizzaFactory->createPizza('Pepperoni', 30);
         $pizza2 = $pizzaFactory->createPizza('Margaret', 40);
@@ -162,6 +165,19 @@
         $abstarctPizzaFactory2 = new AFMargaret();
         $pizza2 = $abstarctPizzaFactory2->createPizza();
         $pizza2->printInfo();
+
+        // прототип
+
+        $protPepperoni = new PPepperoni();
+        $clonePepperoni = $protPepperoni->clonePizza();
+
+        $protMargaret = new PMargaret();
+        $cloneMargaret = $protMargaret->clonePizza();
+
+        $protMargaret->printInfo();
+        $cloneMargaret->printInfo();
+        $protPepperoni->printInfo();
+        $clonePepperoni->printInfo();
 
 
     ?>
