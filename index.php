@@ -24,6 +24,7 @@
         include_once 'BigSize.php';
 
         include_once 'Composite.php';
+        include_once 'MenuFacade.php';
 
         echo '<br/>';
 
@@ -122,9 +123,16 @@
         $composite->add($shawarma1);
         $composite->add($shawarma2);
         $composite->add($shawarma3);
-        $composite->getInfo();
+        // $composite->getInfo();
 
+        // фасад
 
+        $menu = new MenuFacade();
+        $menu->setComposite($composite);
+        $menu->composite->getInfo();
+        $menu->listMenu['tasty'] = $burger2;
+        echo '<br/>';
+        echo $menu->listMenu['tasty']->getInfo();
     ?>
 
 </body>

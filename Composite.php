@@ -32,4 +32,10 @@ class Composite extends IMenuItem {
     public function add($child) {
         $this->children[] = $child;
     }
+
+    public function removeAll() {
+        foreach ($this->children as $key => $element) {
+            unset($this->children[$key]);
+        }
+    }
 }
