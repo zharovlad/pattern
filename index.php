@@ -145,6 +145,10 @@
         include_once 'PPepperoni.php';
         include_once 'PMargaret.php';
 
+        include_once 'Order.php';
+        include_once 'Seller.php';
+        include_once 'ICombo.php';
+
         // простая фабрика
 
         $pizzaFactory = new SFPizza;
@@ -174,11 +178,24 @@
         $protMargaret = new PMargaret();
         $cloneMargaret = $protMargaret->clonePizza();
 
-        $protMargaret->printInfo();
-        $cloneMargaret->printInfo();
-        $protPepperoni->printInfo();
-        $clonePepperoni->printInfo();
+        $protMargaret->getInfo();
+        $cloneMargaret->getInfo();
+        $protPepperoni->getInfo();
+        $clonePepperoni->getInfo();
 
+        // строитель
+        echo '<br/>';
+        $maria = new Seller();
+
+        $maria->setCombo(new ICombo());
+
+        $firstOrder = $maria->getParty();
+        $secondOrder = $maria->getSolo();
+        $thirdOrder = $maria->getForKids();
+
+        $firstOrder->printOrderList();
+        $secondOrder->printOrderList();
+        $thirdOrder->printOrderList();
 
     ?>
 

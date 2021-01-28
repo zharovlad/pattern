@@ -9,7 +9,7 @@ class Prototype {
 
     }
 
-    public function printInfo() {
-        echo $this->name . ' ' . $this->cost . ' ' . $this->size . '<br/>';
+    public function getInfo() {
+        echo $this->name . ' ' . $this->cost . ' ' . $this->size . '<br/>';;
     }
 }

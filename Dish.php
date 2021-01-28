@@ -24,6 +24,6 @@ class Dish extends IMenuItem {
     }
 
     public function getInfo() {
-        return strval($this->name) . ' ' . strval($this->quantity) . ' ' . strval($this->mesure->getMesure()) . '. Price is ' . strval($this->price);
+        return strval($this->name) . ' ' . strval($this->quantity) . ' ' . strval($this->mesure->getMesure()) . '. Price is ' . strval($this->price) . '<br/>';
     }
 }
