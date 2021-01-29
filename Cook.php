@@ -56,4 +56,12 @@ class Cook {
     public function setState($state) {
         $this->current = $state;
     }
+
+    public function cookPizza() {
+        echo 'Cooking pizza<br/>';
+    }
+
+    public function cookBurger() {
+        echo 'Cooking burger<br/>';
+    }
 }

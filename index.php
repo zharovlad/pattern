@@ -45,6 +45,9 @@
 
         include_once 'Shop.php';
 
+        include_once 'CookingBurger.php';
+        include_once 'CookingPizza.php';
+
         echo '<br/>';
         
         // // делегирование 
@@ -219,23 +222,40 @@
         // $John->stopCooking();
         // $John->offStove();
 
-        // наблюдатель
+        // // наблюдатель
 
-        $kfc = new Shop();
-        $kfc->addSeller();
-        $kfc->addSeller();
-        $kfc->addCustomer();
-        $kfc->addCustomer();
-        $kfc->addCustomer();
+        // $kfc = new Shop();
+        // $kfc->addSeller();
+        // $kfc->addSeller();
+        // $kfc->addCustomer();
+        // $kfc->addCustomer();
+        // $kfc->addCustomer();
 
-        $kfc->sendNotification();
-        $kfc->printNotifications();
+        // $kfc->sendNotification();
+        // $kfc->printNotifications();
 
-        $kfc->onlyForWorkers('Salary is up!');
-        $kfc->printNotifications();
+        // $kfc->onlyForWorkers('Salary is up!');
+        // $kfc->printNotifications();
 
-        $kfc->onlyForCustomers('Our shop is open daily!');
-        $kfc->printNotifications();
+        // $kfc->onlyForCustomers('Our shop is open daily!');
+        // $kfc->printNotifications();
+
+        // команда
+        
+        $bestCook = new Cook();
+        $kindCustomer = new Customer();
+
+        $pizzaTime = new CookingPizza();
+        $pizzaTime->setCook($bestCook);
+
+        $burgerTime = new CookingBurger();
+        $burgerTime->setCook($bestCook);
+
+        $kindCustomer->setCommand($burgerTime);
+        $kindCustomer->executeCommand();
+
+        $kindCustomer->setCommand($pizzaTime);
+        $kindCustomer->executeCommand();
     
     ?>
 
