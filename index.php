@@ -134,6 +134,7 @@
         echo '<br/>';
         echo $menu->listMenu['tasty']->getInfo();
         */
+        /*
         include_once 'SFPizza.php';
         include_once 'SFPepperoni.php';
         include_once 'SFMargaret.php';
@@ -196,7 +197,27 @@
         $firstOrder->printOrderList();
         $secondOrder->printOrderList();
         $thirdOrder->printOrderList();
+        */
 
+        include_once 'Cook.php';
+        
+        // состояние
+
+        $John = new Cook();
+
+        $John->cooking();
+        $John->stopCooking();   
+        $John->offStove(); 
+        $John->onStove();
+        $John->cooking();
+        $John->onStove();
+        $John->cooking();
+        $John->stopCooking();
+        $John->cooking();
+        $John->onStove();
+        $John->stopCooking();
+        $John->offStove();
+    
     ?>
 
 </body>
