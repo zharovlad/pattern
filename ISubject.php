@@ -3,7 +3,7 @@
 include_once 'Seller.php';
 include_once 'Customer.php';
 
-class IObserver {
+class ISubject {
     protected $customers = array();
     protected $workers = array();
 

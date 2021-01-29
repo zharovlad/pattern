@@ -1,8 +1,8 @@
 <?php 
 
-include_once 'IObserver.php';
+include_once 'ISubject.php';
 
-class Shop extends IObserver {
+class Shop extends ISubject {
     public function sendNotification($message='SALE!!!') {
         
         foreach($this->customers as $customer) {
