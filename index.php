@@ -9,7 +9,7 @@
 
     <?php
 
-        /*include_once 'Dish.php';
+        include_once 'Dish.php';
         include_once 'Drink.php';
         include_once 'PaymentDeviceProxy.php';
         include_once 'PaymentinDollars.php';
@@ -28,112 +28,113 @@
 
         echo '<br/>';
         
-        // делегирование 
+        // // делегирование 
 
-        $burger1 = new Dish('hamburger', 149);
-        $burger2 = new Dish('cheeseburger', 99, 222);
-        $cola = new Drink('cola',70);
-        $tea = new Drink('tea',30, 100);
-        $coffee = new Drink('coffee',150, 300);
+        // $burger1 = new Dish('hamburger', 149);
+        // $burger2 = new Dish('cheeseburger', 99, 222);
+        // $cola = new Drink('cola',70);
+        // $tea = new Drink('tea',30, 100);
+        // $coffee = new Drink('coffee',150, 300);
         
-        echo 'Burger(149) getInfo() <br/>';
-        echo $burger1->getInfo();
-        echo '<br/><br/>';
+        // echo 'Burger(149) getInfo() <br/>';
+        // echo $burger1->getInfo();
+        // echo '<br/><br/>';
 
-        echo 'Burger(99, 222) getInfo() <br/>';
-        echo $burger2->getInfo();
-        echo '<br/><br/>';
+        // echo 'Burger(99, 222) getInfo() <br/>';
+        // echo $burger2->getInfo();
+        // echo '<br/><br/>';
 
-        echo 'Drink(70) getInfo() <br/>';
-        echo $cola->getInfo();
-        echo '<br/><br/>';
+        // echo 'Drink(70) getInfo() <br/>';
+        // echo $cola->getInfo();
+        // echo '<br/><br/>';
 
-        echo 'Drink(30, 100) getInfo() <br/>';
-        echo $tea->getInfo();
-        echo '<br/><br/>';
+        // echo 'Drink(30, 100) getInfo() <br/>';
+        // echo $tea->getInfo();
+        // echo '<br/><br/>';
 
-        echo 'Drink(50, 300) getInfo() <br/>';
-        echo $coffee->getInfo();
-        echo '<br/><br/>';
+        // echo 'Drink(50, 300) getInfo() <br/>';
+        // echo $coffee->getInfo();
+        // echo '<br/><br/>';
 
         // proxy
 
-        $paymentDevice1 = new PaymentDeviceProxy();
-        echo $paymentDevice1->doPayment(500);
+        $paymentDevice = new PaymentDevice();
+        $paymentDeviceProxy = new PaymentDeviceProxy($paymentDevice);
+        echo $paymentDeviceProxy->doPayment(500);
         echo '<br/><br/>';
 
-        echo $paymentDevice1->doPayment(1500);
+        echo $paymentDeviceProxy->doPayment(1500);
         echo '<br/><br/>';
 
         // Адаптер
 
-        $paymentDevice2 = new PaymentinDollars(32);
-        $adapter = new PaymentDeviceAdapter($paymentDevice2);
+        $payment = new PaymentinDollars(32);
+        $adapter = new PaymentDeviceAdapter($paymentDevice, $payment);
         echo $adapter->doPayment();
         echo '<br/><br/>';
 
-        // Декоратор
+        // // Декоратор
 
-        $ice = new Ice($cola);
-        echo $ice->getInfo();
-        echo '<br/><br/>';
+        // $ice = new Ice($cola);
+        // echo $ice->getInfo();
+        // echo '<br/><br/>';
 
-        $parmesan = new Cheese($burger1, 50);
-        echo $parmesan->getInfo();
-        echo '<br/><br/>';
+        // $parmesan = new Cheese($burger1, 50);
+        // echo $parmesan->getInfo();
+        // echo '<br/><br/>';
 
-        $ceaser = new Sauce($burger2, 30);
-        echo $ceaser->getInfo();
-        echo '<br/><br/>';
+        // $ceaser = new Sauce($burger2, 30);
+        // echo $ceaser->getInfo();
+        // echo '<br/><br/>';
 
-        // bridge
+        // // bridge
 
-        $type = new BigSize();
-        $small = new SmallSize();
+        // $type = new BigSize();
+        // $small = new SmallSize();
 
-        $shawarma1 = new Shawarma($type, 'usual shawarma');
-        $shawarma2 = new ShawarmaPro($type, 'big mushroom shawarma');
-        $shawarma3 = new ShawarmaPro($small, 'small mushroom shawarma');
+        // $shawarma1 = new Shawarma($type, 'usual shawarma');
+        // $shawarma2 = new ShawarmaPro($type, 'big mushroom shawarma');
+        // $shawarma3 = new ShawarmaPro($small, 'small mushroom shawarma');
 
-        $shawarma1->getSize();
-        $shawarma1->getTimetoReady();
-        echo '<br/>';
+        // $shawarma1->getSize();
+        // $shawarma1->getTimetoReady();
+        // echo '<br/>';
 
-        $shawarma2->getSize();
-        $shawarma2->getTimetoReady();
-        $shawarma2->addComponent();
-        echo '<br/>';
+        // $shawarma2->getSize();
+        // $shawarma2->getTimetoReady();
+        // $shawarma2->addComponent();
+        // echo '<br/>';
 
-        $shawarma3->getSize();
-        $shawarma3->getTimetoReady();
-        $shawarma3->addComponent();
-        echo '<br/>';
+        // $shawarma3->getSize();
+        // $shawarma3->getTimetoReady();
+        // $shawarma3->addComponent();
+        // echo '<br/>';
 
-        // компоновщик
+        // // компоновщик
 
-        $composite = new Composite();
-        $composite->add($burger1);
-        $composite->add($burger2);
-        $composite->add($cola);
-        $composite->add($tea);
-        $composite->add($coffee);
-        $composite->add($ice);
-        $composite->add($parmesan);
-        $composite->add($ceaser);
-        $composite->add($shawarma1);
-        $composite->add($shawarma2);
-        $composite->add($shawarma3);
-        // $composite->getInfo();
+        // $composite = new Composite();
+        // $composite->add($burger1);
+        // $composite->add($burger2);
+        // $composite->add($cola);
+        // $composite->add($tea);
+        // $composite->add($coffee);
+        // $composite->add($ice);
+        // $composite->add($parmesan);
+        // $composite->add($ceaser);
+        // $composite->add($shawarma1);
+        // $composite->add($shawarma2);
+        // $composite->add($shawarma3);
+        // // $composite->getInfo();
 
-        // фасад
+        // // фасад
 
-        $menu = new MenuFacade();
-        $menu->setComposite($composite);
-        $menu->composite->getInfo();
-        $menu->listMenu['tasty'] = $burger2;
-        echo '<br/>';
-        echo $menu->listMenu['tasty']->getInfo();
-        */
+        // $menu = new MenuFacade();
+        // $menu->setComposite($composite);
+        // $menu->composite->getInfo();
+        // $menu->listMenu['tasty'] = $burger2;
+        // echo '<br/>';
+        // echo $menu->listMenu['tasty']->getInfo();
+        
         /*
         include_once 'SFPizza.php';
         include_once 'SFPepperoni.php';
@@ -199,24 +200,24 @@
         $thirdOrder->printOrderList();
         */
 
-        include_once 'Cook.php';
+        // include_once 'Cook.php';
         
-        // состояние
+        // // состояние
 
-        $John = new Cook();
+        // $John = new Cook();
 
-        $John->cooking();
-        $John->stopCooking();   
-        $John->offStove(); 
-        $John->onStove();
-        $John->cooking();
-        $John->onStove();
-        $John->cooking();
-        $John->stopCooking();
-        $John->cooking();
-        $John->onStove();
-        $John->stopCooking();
-        $John->offStove();
+        // $John->cooking();
+        // $John->stopCooking();   
+        // $John->offStove(); 
+        // $John->onStove();
+        // $John->cooking();
+        // $John->onStove();
+        // $John->cooking();
+        // $John->stopCooking();
+        // $John->cooking();
+        // $John->onStove();
+        // $John->stopCooking();
+        // $John->offStove();
     
     ?>
 

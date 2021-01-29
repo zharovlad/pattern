@@ -1,21 +1,20 @@
 <?php
-include_once 'IPaymentDevice.php';
+include_once 'PaymentDeviceProxy.php';
 include_once 'PaymentDeviceinDollars.php';
 const course = 75;
 
-class PaymentDeviceAdapter extends IPaymentDevice {
-    public static $idPaymentDollars = 0;
-    private $device;
+class PaymentDeviceAdapter extends PaymentDeviceProxy {
+    private $payment;
 
-    public function __construct($device) {
-        $this->device = $device;
+    public function __construct($paymentDevice, $payment) {
+        parent::__construct($paymentDevice);
+        $this->payment = $payment;
     }
 
     public function doPayment($sum=null) {
-        self::$idPaymentDollars += 1;
-
-        return 'Payment in dollars #' . strval(self::$idPaymentDollars) . ' on sum ' . strval($this->device->getSum()) . 
-        '$ (' . strval($this->device->getSum() * course) . ' RUB) is done. ';
+        $result = $this->paymentDevice->doPayment($this->payment->getSum() * course);
+        $result .= $this->checkPayment($this->payment->getSum() * course);
+        return $result;
     }
 
 }
