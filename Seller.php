@@ -6,9 +6,10 @@ include_once 'Dish.php';
 include_once 'PPepperoni.php';
 include_once 'Shawarma.php';
 include_once 'BigSize.php';
+include_once 'ISubscribers.php';
 
 
-class Seller {
+class Seller extends ISubscribers {
     private $combo;
 
     public function setCombo($combo) {
@@ -37,4 +38,7 @@ class Seller {
         return $this->combo->getDinnerList();
     }
 
+    public function setNotification($notification) {
+        $this->notification = 'Dear seller. ' . $notification;
+    }
 }

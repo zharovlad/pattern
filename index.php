@@ -26,6 +26,25 @@
         include_once 'Composite.php';
         include_once 'MenuFacade.php';
 
+        include_once 'SFPizza.php';
+        include_once 'SFPepperoni.php';
+        include_once 'SFMargaret.php';
+        include_once 'SFSpicy.php';
+
+        include_once 'AFPepperoni.php';
+        include_once 'AFMargaret.php';
+
+        include_once 'PPepperoni.php';
+        include_once 'PMargaret.php';
+
+        include_once 'Order.php';
+        include_once 'Seller.php';
+        include_once 'ICombo.php';
+
+        include_once 'Cook.php';
+
+        include_once 'Shop.php';
+
         echo '<br/>';
         
         // // делегирование 
@@ -56,22 +75,22 @@
         // echo $coffee->getInfo();
         // echo '<br/><br/>';
 
-        // proxy
+        // // proxy
 
-        $paymentDevice = new PaymentDevice();
-        $paymentDeviceProxy = new PaymentDeviceProxy($paymentDevice);
-        echo $paymentDeviceProxy->doPayment(500);
-        echo '<br/><br/>';
+        // $paymentDevice = new PaymentDevice();
+        // $paymentDeviceProxy = new PaymentDeviceProxy($paymentDevice);
+        // echo $paymentDeviceProxy->doPayment(500);
+        // echo '<br/><br/>';
 
-        echo $paymentDeviceProxy->doPayment(1500);
-        echo '<br/><br/>';
+        // echo $paymentDeviceProxy->doPayment(1500);
+        // echo '<br/><br/>';
 
-        // Адаптер
+        // // Адаптер
 
-        $payment = new PaymentinDollars(32);
-        $adapter = new PaymentDeviceAdapter($paymentDevice, $payment);
-        echo $adapter->doPayment();
-        echo '<br/><br/>';
+        // $payment = new PaymentinDollars(32);
+        // $adapter = new PaymentDeviceAdapter($paymentDevice, $payment);
+        // echo $adapter->doPayment();
+        // echo '<br/><br/>';
 
         // // Декоратор
 
@@ -124,7 +143,7 @@
         // $composite->add($shawarma1);
         // $composite->add($shawarma2);
         // $composite->add($shawarma3);
-        // // $composite->getInfo();
+        // $composite->getInfo();
 
         // // фасад
 
@@ -135,72 +154,53 @@
         // echo '<br/>';
         // echo $menu->listMenu['tasty']->getInfo();
         
-        /*
-        include_once 'SFPizza.php';
-        include_once 'SFPepperoni.php';
-        include_once 'SFMargaret.php';
-        include_once 'SFSpicy.php';
+        // // простая фабрика
 
-        include_once 'AFPepperoni.php';
-        include_once 'AFMargaret.php';
+        // $pizzaFactory = new SFPizza;
+        // $pizza1 = $pizzaFactory->createPizza('Pepperoni', 30);
+        // $pizza2 = $pizzaFactory->createPizza('Margaret', 40);
+        // $pizza3 = $pizzaFactory->createPizza('Spicy', 20);
 
-        include_once 'PPepperoni.php';
-        include_once 'PMargaret.php';
+        // $pizza1->printInfo();
+        // $pizza2->printInfo();
+        // $pizza3->printInfo();
 
-        include_once 'Order.php';
-        include_once 'Seller.php';
-        include_once 'ICombo.php';
+        // //абстрактная фабрика
 
-        // простая фабрика
+        // $abstarctPizzaFactory1 = new AFPepperoni();
+        // $pizza1 = $abstarctPizzaFactory1->createPizza();
+        // $pizza1->printInfo();
 
-        $pizzaFactory = new SFPizza;
-        $pizza1 = $pizzaFactory->createPizza('Pepperoni', 30);
-        $pizza2 = $pizzaFactory->createPizza('Margaret', 40);
-        $pizza3 = $pizzaFactory->createPizza('Spicy', 20);
+        // $abstarctPizzaFactory2 = new AFMargaret();
+        // $pizza2 = $abstarctPizzaFactory2->createPizza();
+        // $pizza2->printInfo();
 
-        $pizza1->printInfo();
-        $pizza2->printInfo();
-        $pizza3->printInfo();
+        // // прототип
 
-        //абстрактная фабрика
+        // $protPepperoni = new PPepperoni();
+        // $clonePepperoni = $protPepperoni->clonePizza();
 
-        $abstarctPizzaFactory1 = new AFPepperoni();
-        $pizza1 = $abstarctPizzaFactory1->createPizza();
-        $pizza1->printInfo();
+        // $protMargaret = new PMargaret();
+        // $cloneMargaret = $protMargaret->clonePizza();
 
-        $abstarctPizzaFactory2 = new AFMargaret();
-        $pizza2 = $abstarctPizzaFactory2->createPizza();
-        $pizza2->printInfo();
+        // $protMargaret->getInfo();
+        // $cloneMargaret->getInfo();
+        // $protPepperoni->getInfo();
+        // $clonePepperoni->getInfo();
 
-        // прототип
+        // // строитель
+        // echo '<br/>';
+        // $maria = new Seller();
 
-        $protPepperoni = new PPepperoni();
-        $clonePepperoni = $protPepperoni->clonePizza();
+        // $maria->setCombo(new ICombo());
 
-        $protMargaret = new PMargaret();
-        $cloneMargaret = $protMargaret->clonePizza();
+        // $firstOrder = $maria->getParty();
+        // $secondOrder = $maria->getSolo();
+        // $thirdOrder = $maria->getForKids();
 
-        $protMargaret->getInfo();
-        $cloneMargaret->getInfo();
-        $protPepperoni->getInfo();
-        $clonePepperoni->getInfo();
-
-        // строитель
-        echo '<br/>';
-        $maria = new Seller();
-
-        $maria->setCombo(new ICombo());
-
-        $firstOrder = $maria->getParty();
-        $secondOrder = $maria->getSolo();
-        $thirdOrder = $maria->getForKids();
-
-        $firstOrder->printOrderList();
-        $secondOrder->printOrderList();
-        $thirdOrder->printOrderList();
-        */
-
-        // include_once 'Cook.php';
+        // $firstOrder->printOrderList();
+        // $secondOrder->printOrderList();
+        // $thirdOrder->printOrderList();
         
         // // состояние
 
@@ -218,6 +218,24 @@
         // $John->onStove();
         // $John->stopCooking();
         // $John->offStove();
+
+        // наблюдатель
+
+        $kfc = new Shop();
+        $kfc->addSeller();
+        $kfc->addSeller();
+        $kfc->addCustomer();
+        $kfc->addCustomer();
+        $kfc->addCustomer();
+
+        $kfc->sendNotification();
+        $kfc->printNotifications();
+
+        $kfc->onlyForWorkers('Salary is up!');
+        $kfc->printNotifications();
+
+        $kfc->onlyForCustomers('Our shop is open daily!');
+        $kfc->printNotifications();
     
     ?>
 
